@@ -30,7 +30,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .sh-logo{height:36px;object-fit:contain;}
 
 /* BODY below header */
-.body{display:grid;position:absolute;top:62px;left:0;right:0;bottom:0;}
+.body{display:grid;position:absolute;top:62px;left:0;right:0;bottom:32px;}
 .body-2col{grid-template-columns:34% 66%;}
 .body-2col-half{grid-template-columns:1fr 1fr;}
 
@@ -77,13 +77,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
 .vd-ico{font-size:1.8em;}
 
 /* NAV */
-.nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:200;
-  background:white;box-shadow:0 4px 20px rgba(0,0,0,.1);border:1px solid var(--border);border-radius:50px;padding:7px 10px;}
-.nav button{background:transparent;border:none;color:var(--muted);padding:8px 18px;border-radius:40px;
-  cursor:pointer;font-size:.88em;font-weight:700;font-family:system-ui,sans-serif;transition:all .2s;letter-spacing:.8px;text-transform:uppercase;}
+.nav{position:fixed;bottom:6px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:200;
+  background:white;box-shadow:0 2px 12px rgba(0,0,0,.1);border:1px solid var(--border);border-radius:50px;padding:4px 8px;}
+.nav button{background:transparent;border:none;color:var(--muted);padding:5px 12px;border-radius:40px;
+  cursor:pointer;font-size:.7em;font-weight:700;font-family:system-ui,sans-serif;transition:all .2s;letter-spacing:.6px;text-transform:uppercase;}
 .nav button:hover{color:var(--sb-green);background:#e8f5ee;}
 .nav button.active{color:white;background:var(--sb-green);}
-.nav .arr{padding:8px 12px;}
+.nav .arr{padding:5px 8px;}
+
+/* COLLAPSIBLE SECTIONS */
+.collapsible-header{cursor:pointer;user-select:none;}
+.collapsible-header:hover{opacity:.9;}
+.collapsible-header .chevron{display:inline-block;transition:transform .25s;font-size:.7em;margin-left:6px;}
+.collapsible-header.open .chevron{transform:rotate(180deg);}
+.collapsible-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.collapsible-body.open{max-height:300px;}
 
 /* RANKING SLIDE */
 .rl{display:flex;flex-direction:column;justify-content:center;padding:36px 40px;}
@@ -229,38 +237,42 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
         <div style="font-size:2em;font-weight:900;color:#007A3D;">5.00</div>
       </div>
 
-      <!-- FRENTE 4: Técnico (7 categorías) -->
-      <div class="a3" style="background:white;border:1.5px solid var(--border);border-left:4px solid #007A3D;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:transform .15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <!-- FRENTE 4: Técnico (7 categorías) - COLAPSABLE -->
+      <div class="a3" style="background:white;border:1.5px solid var(--border);border-left:4px solid #007A3D;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);">
+        <div class="collapsible-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');" style="display:flex;align-items:center;justify-content:space-between;">
           <div>
-            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#007A3D;">Técnico</div>
+            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#007A3D;">Técnico <span class="chevron">▼</span></div>
             <div style="height:4px;width:100px;background:#e5e7eb;border-radius:3px;margin-top:5px;"><div style="width:85.8%;height:100%;background:#007A3D;border-radius:3px;"></div></div>
           </div>
           <div style="font-size:1.8em;font-weight:900;color:#007A3D;">4.29</div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;font-size:.82em;color:#374151;">
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Arquitectura TI <span style="color:#9ca3af;">(27%)</span></span><span style="font-weight:800;">4.81</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Infraestructura TI <span style="color:#9ca3af;">(12%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Accesos <span style="color:#9ca3af;">(7%)</span></span><span style="font-weight:800;color:#d97706;">1.92 ⚠</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Soporte y Servicio <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;">3.13</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Calidad QA <span style="color:#9ca3af;">(7%)</span></span><span style="font-weight:800;">4.75</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Continuidad TI <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;">4.79</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;"><span>Operaciones TI <span style="color:#9ca3af;">(6%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
+        <div class="collapsible-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;font-size:.82em;color:#374151;margin-top:10px;">
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Arquitectura TI <span style="color:#9ca3af;">(27%)</span></span><span style="font-weight:800;">4.81</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Infraestructura TI <span style="color:#9ca3af;">(12%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Accesos <span style="color:#9ca3af;">(7%)</span></span><span style="font-weight:800;color:#d97706;">1.92 ⚠</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Soporte y Servicio <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;">3.13</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Calidad QA <span style="color:#9ca3af;">(7%)</span></span><span style="font-weight:800;">4.75</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Continuidad TI <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;">4.79</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;"><span>Operaciones TI <span style="color:#9ca3af;">(6%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
+          </div>
         </div>
       </div>
 
-      <!-- FRENTE 5: Riesgo + Seguridad -->
-      <div class="a4" style="background:white;border:1.5px solid #d1fae5;border-left:4px solid #007A3D;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,122,61,.06);transition:transform .15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <!-- FRENTE 5: Riesgo + Seguridad - COLAPSABLE -->
+      <div class="a4" style="background:white;border:1.5px solid #d1fae5;border-left:4px solid #007A3D;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,122,61,.06);">
+        <div class="collapsible-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');" style="display:flex;align-items:center;justify-content:space-between;">
           <div>
-            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#007A3D;">Riesgo + Seguridad TI</div>
+            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#007A3D;">Riesgo + Seguridad TI <span class="chevron">▼</span></div>
             <div style="height:4px;width:100px;background:#e5e7eb;border-radius:3px;margin-top:5px;"><div style="width:87%;height:100%;background:#007A3D;border-radius:3px;"></div></div>
           </div>
           <div style="font-size:1.8em;font-weight:900;color:#007A3D;">4.35</div>
         </div>
-        <div style="display:flex;gap:24px;font-size:.82em;color:#374151;">
-          <div style="display:flex;gap:8px;"><span>Seguridad TI <span style="color:#9ca3af;">(80%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
-          <div style="display:flex;gap:8px;"><span>Datos Personales <span style="color:#9ca3af;">(20%)</span></span><span style="font-weight:800;color:#d97706;">1.75 ⚠</span></div>
+        <div class="collapsible-body">
+          <div style="display:flex;gap:24px;font-size:.82em;color:#374151;margin-top:8px;">
+            <div style="display:flex;gap:8px;"><span>Seguridad TI <span style="color:#9ca3af;">(80%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
+            <div style="display:flex;gap:8px;"><span>Datos Personales <span style="color:#9ca3af;">(20%)</span></span><span style="font-weight:800;color:#d97706;">1.75 ⚠</span></div>
+          </div>
         </div>
       </div>
 
@@ -337,38 +349,42 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
         <div style="font-size:2em;font-weight:900;color:#007A3D;">4.64</div>
       </div>
 
-      <!-- FRENTE 4: Técnico -->
-      <div class="a3" style="background:white;border:1.5px solid var(--border);border-left:4px solid #007A3D;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:transform .15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <!-- FRENTE 4: Técnico - COLAPSABLE -->
+      <div class="a3" style="background:white;border:1.5px solid var(--border);border-left:4px solid #007A3D;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);">
+        <div class="collapsible-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');" style="display:flex;align-items:center;justify-content:space-between;">
           <div>
-            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#007A3D;">Técnico</div>
+            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#007A3D;">Técnico <span class="chevron">▼</span></div>
             <div style="height:4px;width:100px;background:#e5e7eb;border-radius:3px;margin-top:5px;"><div style="width:77.8%;height:100%;background:#007A3D;border-radius:3px;"></div></div>
           </div>
           <div style="font-size:1.8em;font-weight:900;color:#007A3D;">3.89</div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;font-size:.82em;color:#374151;">
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Arquitectura TI <span style="color:#9ca3af;">(26.7%)</span></span><span style="font-weight:800;">4.42</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Infraestructura TI <span style="color:#9ca3af;">(12%)</span></span><span style="font-weight:800;">4.11</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Accesos <span style="color:#9ca3af;">(6.7%)</span></span><span style="font-weight:800;">3.65</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Soporte y Servicio <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;color:#d97706;">2.38 ⚠</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Calidad QA <span style="color:#9ca3af;">(6.7%)</span></span><span style="font-weight:800;">4.13</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Continuidad TI <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;">4.27</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;"><span>Operaciones TI <span style="color:#9ca3af;">(6%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
+        <div class="collapsible-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;font-size:.82em;color:#374151;margin-top:10px;">
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Arquitectura TI <span style="color:#9ca3af;">(26.7%)</span></span><span style="font-weight:800;">4.42</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Infraestructura TI <span style="color:#9ca3af;">(12%)</span></span><span style="font-weight:800;">4.11</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Accesos <span style="color:#9ca3af;">(6.7%)</span></span><span style="font-weight:800;">3.65</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Soporte y Servicio <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;color:#d97706;">2.38 ⚠</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Calidad QA <span style="color:#9ca3af;">(6.7%)</span></span><span style="font-weight:800;">4.13</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Continuidad TI <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;">4.27</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;"><span>Operaciones TI <span style="color:#9ca3af;">(6%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
+          </div>
         </div>
       </div>
 
-      <!-- FRENTE 5: Riesgo + Seguridad -->
-      <div class="a4" style="background:#f0faf4;border:2px solid #007A3D;border-left:4px solid #007A3D;border-radius:10px;padding:12px 16px;box-shadow:0 3px 12px rgba(0,122,61,.1);transition:transform .15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <!-- FRENTE 5: Riesgo + Seguridad - COLAPSABLE -->
+      <div class="a4" style="background:#f0faf4;border:2px solid #007A3D;border-left:4px solid #007A3D;border-radius:10px;padding:12px 16px;box-shadow:0 3px 12px rgba(0,122,61,.1);">
+        <div class="collapsible-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');" style="display:flex;align-items:center;justify-content:space-between;">
           <div>
-            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#007A3D;">Riesgo + Seguridad TI <span style="color:#F5A800;">★ Líder</span></div>
+            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#007A3D;">Riesgo + Seguridad TI <span style="color:#F5A800;">★ Líder</span> <span class="chevron">▼</span></div>
             <div style="height:4px;width:100px;background:#d1fae5;border-radius:3px;margin-top:5px;"><div style="width:95.6%;height:100%;background:#007A3D;border-radius:3px;"></div></div>
           </div>
           <div style="font-size:1.8em;font-weight:900;color:#007A3D;">4.78</div>
         </div>
-        <div style="display:flex;gap:24px;font-size:.82em;color:#374151;">
-          <div style="display:flex;gap:8px;"><span>Seguridad TI <span style="color:#9ca3af;">(80%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
-          <div style="display:flex;gap:8px;"><span>Datos Personales <span style="color:#9ca3af;">(20%)</span></span><span style="font-weight:800;">3.88</span></div>
+        <div class="collapsible-body">
+          <div style="display:flex;gap:24px;font-size:.82em;color:#374151;margin-top:8px;">
+            <div style="display:flex;gap:8px;"><span>Seguridad TI <span style="color:#9ca3af;">(80%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
+            <div style="display:flex;gap:8px;"><span>Datos Personales <span style="color:#9ca3af;">(20%)</span></span><span style="font-weight:800;">3.88</span></div>
+          </div>
         </div>
       </div>
 
@@ -446,38 +462,42 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
         <div style="font-size:2em;font-weight:900;color:#007A3D;">4.84</div>
       </div>
 
-      <!-- FRENTE 4: Técnico -->
-      <div class="a3" style="background:white;border:1.5px solid var(--border);border-left:4px solid #F5A800;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:transform .15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <!-- FRENTE 4: Técnico - COLAPSABLE -->
+      <div class="a3" style="background:white;border:1.5px solid var(--border);border-left:4px solid #F5A800;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);">
+        <div class="collapsible-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');" style="display:flex;align-items:center;justify-content:space-between;">
           <div>
-            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#d97706;">Técnico <span style="font-size:.9em;">⚠ Brechas</span></div>
+            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#d97706;">Técnico <span style="font-size:.9em;">⚠ Brechas</span> <span class="chevron">▼</span></div>
             <div style="height:4px;width:100px;background:#e5e7eb;border-radius:3px;margin-top:5px;"><div style="width:70.2%;height:100%;background:#F5A800;border-radius:3px;"></div></div>
           </div>
           <div style="font-size:1.8em;font-weight:900;color:#d97706;">3.51</div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;font-size:.82em;color:#374151;">
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Arquitectura TI <span style="color:#9ca3af;">(27%)</span></span><span style="font-weight:800;">4.18</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Infraestructura TI <span style="color:#9ca3af;">(12%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Accesos <span style="color:#9ca3af;">(7%)</span></span><span style="font-weight:800;color:#d97706;">2.74 ⚠</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Soporte y Servicio <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;color:#d97706;">1.38 ⚠</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Calidad QA <span style="color:#9ca3af;">(7%)</span></span><span style="font-weight:800;">4.75</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Continuidad TI <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;">3.96</span></div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0;"><span>Operaciones TI <span style="color:#9ca3af;">(6%)</span></span><span style="font-weight:800;color:#d97706;">2.86 ⚠</span></div>
+        <div class="collapsible-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px 20px;font-size:.82em;color:#374151;margin-top:10px;">
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Arquitectura TI <span style="color:#9ca3af;">(27%)</span></span><span style="font-weight:800;">4.18</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Infraestructura TI <span style="color:#9ca3af;">(12%)</span></span><span style="font-weight:800;color:#007A3D;">5.00 ★</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Accesos <span style="color:#9ca3af;">(7%)</span></span><span style="font-weight:800;color:#d97706;">2.74 ⚠</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Soporte y Servicio <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;color:#d97706;">1.38 ⚠</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Calidad QA <span style="color:#9ca3af;">(7%)</span></span><span style="font-weight:800;">4.75</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;"><span>Continuidad TI <span style="color:#9ca3af;">(21%)</span></span><span style="font-weight:800;">3.96</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;"><span>Operaciones TI <span style="color:#9ca3af;">(6%)</span></span><span style="font-weight:800;color:#d97706;">2.86 ⚠</span></div>
+          </div>
         </div>
       </div>
 
-      <!-- FRENTE 5: Riesgo + Seguridad -->
-      <div class="a4" style="background:white;border:1.5px solid #d1fae5;border-left:4px solid #007A3D;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,122,61,.06);transition:transform .15s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <!-- FRENTE 5: Riesgo + Seguridad - COLAPSABLE -->
+      <div class="a4" style="background:white;border:1.5px solid #d1fae5;border-left:4px solid #007A3D;border-radius:10px;padding:12px 16px;box-shadow:0 2px 8px rgba(0,122,61,.06);">
+        <div class="collapsible-header" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');" style="display:flex;align-items:center;justify-content:space-between;">
           <div>
-            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#007A3D;">Riesgo + Seguridad TI</div>
+            <div style="font-size:.76em;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#007A3D;">Riesgo + Seguridad TI <span class="chevron">▼</span></div>
             <div style="height:4px;width:100px;background:#e5e7eb;border-radius:3px;margin-top:5px;"><div style="width:82.2%;height:100%;background:#007A3D;border-radius:3px;"></div></div>
           </div>
           <div style="font-size:1.8em;font-weight:900;color:#007A3D;">4.11</div>
         </div>
-        <div style="display:flex;gap:24px;font-size:.82em;color:#374151;">
-          <div style="display:flex;gap:8px;"><span>Seguridad TI <span style="color:#9ca3af;">(80%)</span></span><span style="font-weight:800;">4.76</span></div>
-          <div style="display:flex;gap:8px;"><span>Datos Personales <span style="color:#9ca3af;">(20%)</span></span><span style="font-weight:800;color:#d97706;">1.50 ⚠</span></div>
+        <div class="collapsible-body">
+          <div style="display:flex;gap:24px;font-size:.82em;color:#374151;margin-top:8px;">
+            <div style="display:flex;gap:8px;"><span>Seguridad TI <span style="color:#9ca3af;">(80%)</span></span><span style="font-weight:800;">4.76</span></div>
+            <div style="display:flex;gap:8px;"><span>Datos Personales <span style="color:#9ca3af;">(20%)</span></span><span style="font-weight:800;color:#d97706;">1.50 ⚠</span></div>
+          </div>
         </div>
       </div>
 
@@ -777,6 +797,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
           <tbody>
             <tr><td style="padding:8px 12px;border-bottom:1px solid #f0f2f5;font-weight:600;">Implementación</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;">9 meses</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#007A3D;font-weight:700;">6 meses ✅</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#007A3D;font-weight:700;">6 meses ✅</td></tr>
             <tr><td style="padding:8px 12px;border-bottom:1px solid #f0f2f5;font-weight:600;">Duración operación</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;">27 meses</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#007A3D;font-weight:700;">30 meses ✅</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#007A3D;font-weight:700;">30 meses ✅</td></tr>
+            <tr><td style="padding:8px 12px;border-bottom:1px solid #f0f2f5;font-weight:600;">Costo anual unitario/ licencia</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;">COP $144.400</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;">COP $127.200</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#007A3D;font-weight:700;">COP $86.200* ✅</td></tr>
             <tr><td style="padding:8px 12px;border-bottom:1px solid #f0f2f5;font-weight:600;">CAPEX</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#f87171;font-weight:700;">Sí ($496M) ❌</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#007A3D;font-weight:700;">No ✅</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#007A3D;font-weight:700;">No ✅</td></tr>
             <tr><td style="padding:8px 12px;border-bottom:1px solid #f0f2f5;font-weight:600;">Inicio OPEX</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;">Desde Go Live</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;">Desde mes 1</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;">Desde mes 1</td></tr>
             <tr><td style="padding:8px 12px;border-bottom:1px solid #f0f2f5;font-weight:600;">Incrementos</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#f87171;font-weight:700;">IPC anual ❌</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#007A3D;font-weight:700;">Año 1-2: 0% / Año 3: IPC ✅</td><td style="text-align:center;padding:8px;border-bottom:1px solid #f0f2f5;color:#007A3D;font-weight:700;">Sin incrementos ✅</td></tr>
@@ -786,6 +807,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-seri
           </tbody>
         </table>
       </div>
+      <div style="font-size:.72em;color:var(--muted);margin-top:4px;padding:0 4px;">* Valor USD 21,55 · TRM estimada COP $4.000</div>
       <div class="a4" style="background:linear-gradient(90deg,#007A3D,#009944);border-radius:12px;padding:14px 20px;box-shadow:0 4px 14px rgba(0,122,61,.15);">
         <div style="font-size:.74em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:3px;">Conclusión Económica y Comercial</div>
         <p style="font-size:.86em;line-height:1.7;color:white;">Rankmi: <strong>menor costo ($1.511M)</strong>, sin CAPEX ni incrementos, único que <strong>Cumple</strong> comercialmente (4.13). BUK competitivo ($1.933M) con condiciones flexibles. Heinsohn más costoso ($2.565M) y <strong>No Cumple</strong> (1.88).</p>
